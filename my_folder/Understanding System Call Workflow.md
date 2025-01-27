@@ -54,6 +54,19 @@ POSIX 函数内部通过软中断（Software Interrupt）或其他机制，发�
 系统调用完成后，操作系统将结果返回给用户程序。
 CPU 切回用户模式，继续执行你的程序。
 
+
+Making a System Call:
+
+When a process in user mode calls a system call (e.g., read(), write()), the CPU switches from user mode to kernel mode.
+This is done using a special instruction (e.g., syscall on x86-64 architecture).
+Operating System Executes the Request:
+
+In kernel mode, the operating system takes control of the CPU and executes the requested operation (e.g., reading a file).
+The process cannot control what happens in kernel mode, ensuring security and stability.
+Returning to User Mode:
+
+Once the operating system completes the system call, the CPU switches back to user mode.
+The process can then resume its execution in user mode with the result of the system call.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++
 误区：
 POSIX 函数本身并不切换模式。
