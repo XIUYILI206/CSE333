@@ -1,0 +1,16 @@
+for loop 理解：
+for（int val = 1； val <= 10; val++）{
+  sum += val;
+}
+
+先 int val = 1；
+再 val<=10      1
+   sum +=val    2
+   val++        3
+   val<=10      4
+   sum += val   2
+   val++        3
+   val<=10      4
+
+   1->2->3->4 
+   4->2
