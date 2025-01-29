@@ -1,0 +1,39 @@
+std：：cin >> value
+Std:cin 是配合用户打什么进去 ，进去value里面
+如果遇到ctrl + z 或者endl 或者非返回类型就会停下来
+std：：out最终会出现在我们屏幕上
+
+The input sequence: 42, 42, 42, 55, 55, 100, 100, 100, 100, Z
+The program counts occurrences of each number and prints:
+42 occurs 3 times
+55 occurs 2 times
+100 occurs 4 times
+The Z at the end likely indicates the end of input, causing the program to terminate and print the last counted value.
+
+练习题：
+#include <iostream>
+
+int main() {
+    int currVal = 0, value = 0; // Define current value and input value
+
+    // If there is at least one number to read
+    if (std::cin >> currVal) {
+        int count = 1; // Initialize count to track occurrences
+
+        // Read the remaining numbers
+        while (std::cin >> value) {
+            if (currVal == value) { // If the same number is repeated
+                count++; // Increment count
+            } else {
+                std::cout << currVal << " occurs " << count << " times" << std::endl;
+                currVal = value; // Update currVal to new number
+                count = 1; // Reset count for new number
+            }
+        }
+
+        // Print the last number after exiting the loop
+        std::cout << currVal << " occurs " << count << " times" << std::endl;
+    }
+
+    return 0;
+}
