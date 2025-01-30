@@ -1,0 +1,90 @@
+int x = 10;
+int* ptr = &x;  // 指针 ptr 存储 x 的地址
+
+std::cout << ptr;   // 打印的是 x 的地址
+std::cout << *ptr;  // 解引用，打印的是 x 的值（10）
+
+什么是deference？
+int* ptr = &x;
+一个指针访问它指向的那个variable的值
+
+
+
+int main(int argc, char** argv) {  
+    int x = 5, y = 10;  
+    int& z = x;  // z 是 x 的引用（别名）
+
+    z += 1;  // x 变成 6
+    x += 1;  // x 变成 7
+
+    z = y;   // 不是让 z 绑定到 y，而是让 x 变成 y 的值，即 x = 10
+    z += 1;  // x 变成 11
+
+    return EXIT_SUCCESS;  
+}
+什么是reference？
+int& z = x; 对值进行的一种绑定。
+
+
+
+  
+什么是pass-by-reference？
+  就是swap value
+  
+void swap(int& x, int& y) { 
+    int tmp = x;  // 临时保存 x
+    x = y;        // x 赋值为 y
+    y = tmp;      // y 赋值为原来的 x
+}
+
+int main(int argc, char** argv) {  
+    int a = 5, b = 10;
+    
+    swap(a, b);  // 交换 a 和 b 的值
+    
+    cout << "a: " << a << "; b: " << b << endl;
+    
+    return EXIT_SUCCESS;
+}
+
+有const的值是不可以更改的，但是可以参与计算
+  void BrokenPrintSquare(const int& i) {  
+    i = i * i;  // ❌ 编译错误！i 是 const，不能修改
+    std::cout << i << std::endl;
+}
+
+int main(int argc, char** argv) {  
+    int j = 2;
+    BrokenPrintSquare(j);  
+    return EXIT_SUCCESS;
+}
+
+
+void PrintSquare(const int& i) {  
+    std::cout << (i * i) << std::endl;  // ✅ 只计算，不修改 i
+}
+————————————————————————————————————————————————————————————————
+
+void foo(const int* y) {  
+    std::cout << *y << std::endl;  // ✅ 可以读取值
+    // *y = 100; ❌ 不能修改 y 指向的值
+}
+
+void bar(int* y) {  
+    std::cout << *y << std::endl;  // ✅ 可以读取值
+    *y = 100;  // ✅ 可以修改 y 指向的值
+}
+
+int main(int argc, char** argv) {  
+    const int a = 10;  
+    int b = 20;
+
+    foo(&a);  // ✅ OK: foo 只读取数据，a 不能被修改
+    foo(&b);  // ✅ OK: b 不是 const，foo 允许传递普通 int
+
+    bar(&a);  // ❌ ERROR: bar 可能会修改值，而 a 是 const
+    bar(&b);  // ✅ OK: b 不是 const，bar 允许修改值
+
+    return EXIT_SUCCESS;
+}
+
