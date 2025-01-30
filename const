@@ -1,0 +1,8 @@
+variable都要初始化，如果不这样，里面可能早就赋予了值
+在main里面就必须得assign 0 来初始化，如果是main外面，它int a；就已经自动给他初始化了
+staic declare variabe 让其他文件引用不了
+extern declare variable 还 assign value就是让其他人知道这个variable其他文件是可以用的
+
+2.4
+const对变量的类型加以限定，变量的值不能改变.
+const int bufSize=512 //你初始化的时候赋值可以，但是后面就不能改变
