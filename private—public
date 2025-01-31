@@ -1,0 +1,29 @@
+✅ 是的！private 变量不能在 main() 或者非这个class直接访问！
+✅ 但可以在 public 方法里访问 private 变量，然后 main() 通过这些方法访问它们。
+
+#include <iostream>
+
+class Rectangle {
+private:
+    int width;
+    int height;
+
+public:
+    Rectangle(int w, int h) {
+        width = w;
+        height = h;
+    }
+
+    // ✅ 通过 `public` 方法访问 `private` 变量
+    int getWidth() { return width; }
+    int getHeight() { return height; }
+};
+
+int main() {
+    Rectangle r(5, 10);
+    
+    std::cout << "Width: " << r.getWidth() << std::endl;  // ✅ 正确！通过 public 方法访问 private
+    std::cout << "Height: " << r.getHeight() << std::endl;
+
+    return 0;
+}
