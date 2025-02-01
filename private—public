@@ -3,27 +3,69 @@
 
 #include <iostream>
 
-class Rectangle {
+class Point3D {
 private:
-    int width;
-    int height;
+    int x, y, z;
 
 public:
-    Rectangle(int w, int h) {
-        width = w;
-        height = h;
+    // ✅ Corrected: Assign parameters to member variables
+    Point3D(int x_value = 0, int y_value = 0, int z_value = 0) {
+        x = x_value;  // ✅ Correct assignment
+        y = y_value;
+        z = z_value;
     }
 
-    // ✅ 通过 `public` 方法访问 `private` 变量
-    int getWidth() { return width; }
-    int getHeight() { return height; }
+    void print() const {
+        std::cout << "Point: (" << x << ", " << y << ", " << z << ")" << std::endl;
+    }
 };
 
 int main() {
-    Rectangle r(5, 10);
-    
-    std::cout << "Width: " << r.getWidth() << std::endl;  // ✅ 正确！通过 public 方法访问 private
-    std::cout << "Height: " << r.getHeight() << std::endl;
+    Point3D p(7, 8, 9);
+    p.print();  // Expected Output: Point: (7, 8, 9)
 
     return 0;
 }
+
+
+
+_________________
+
+#include <iostream>
+
+class Point3D {
+private:
+    int x, y, z;
+
+public:
+    // ✅ Task 1: Implement a default constructor
+Point3D(){
+ x= 0;
+ y=0;
+ z=0;
+}
+
+    // ✅ Task 2: Implement a constructor with three parameters
+Point3D(int x_value, int y_value,int z_value){
+    x = x_value;
+    y = y_value;
+    z = z_value;
+
+}
+
+    // ✅ Task 3: Implement a function print() to print x, y, z
+void print (){
+        std::cout << "Point: (" << x << ", " << y << ", " << z << ")" << std::endl;
+}
+};
+
+int main() {
+    Point3D p1;  // Should initialize to (0,0,0)
+    Point3D p2(5, 10, 15);  // Should initialize to (5,10,15)
+
+    p1.print();
+    p2.print();
+
+    return 0;
+}
+
