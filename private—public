@@ -69,3 +69,48 @@ int main() {
     return 0;
 }
 
+________________________________________________________
+#include <iostream>
+
+class Rectangle {
+private:
+    int width, height;
+
+public:
+    // ✅ Task 1: Implement default constructor (width = 1, height = 1)
+    Rectangle() {
+        width = 1;
+        height = 1;
+    }
+
+    // ✅ Task 2: Implement parameterized constructor
+    Rectangle(int width_value, int height_value) {
+        width = width_value;
+        height = height_value;
+    }
+
+    // ✅ Task 3: Implement copy constructor
+    Rectangle(const Rectangle& other) {
+        width = other.width;
+        height = other.height;
+    }
+
+    // ✅ Task 4: Implement print function
+    void print() {
+        std::cout << "Rectangle: Width = " << width << ", Height = " << height << std::endl;
+    }
+};
+
+int main() {
+    Rectangle r1;      // Calls default constructor
+    Rectangle r2(5, 6); // Calls parameterized constructor
+    Rectangle r3 = r2; // Calls copy constructor
+
+    r1.print();  // Output: Rectangle: Width = 1, Height = 1
+    r2.print();  // Output: Rectangle: Width = 5, Height = 6
+    r3.print();  // Output: Rectangle: Width = 5, Height = 6
+
+    return 0;
+}
+
+
