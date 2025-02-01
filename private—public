@@ -113,4 +113,48 @@ int main() {
     return 0;
 }
 
+______________________________________________
+#include <iostream>
+
+class Circle {
+private:
+    double radius, area;
+
+public:
+    // ✅ Default Constructor
+    Circle() {
+        radius = 0;
+        area = 0;
+    }
+
+    // ✅ Parameterized Constructor
+    Circle(double radi_value) {
+        radius = radi_value;
+        area = 3.14 * radius;  // Correctly calculate area
+    }
+
+    // ✅ Copy Constructor
+    Circle(const Circle &others) {
+        radius = others.radius;
+        area = others.area;
+    }
+
+    // ✅ Print Function
+    void print() const {
+        std::cout << "Circle: Radius = " << radius << ", Area = " << area << std::endl;
+    }
+};
+
+int main() {
+    Circle c1(1);
+    Circle c2(3);
+    Circle c3 = c2;  // Copy constructor
+
+    c1.print();  // Expected: "Circle: Radius = 1, Area = 3.14"
+    c2.print();  // Expected: "Circle: Radius = 3, Area = 28.26"
+    c3.print();  // Expected: "Circle: Radius = 3, Area = 28.26"
+
+    return 0;
+}
+
 
