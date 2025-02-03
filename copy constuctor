@@ -1,0 +1,10 @@
+Point& Point::operator=(const Point& rhs) {
+    if (this != &rhs) {  // (1) always check against this
+        x_ = rhs.x_;
+        y_ = rhs.y_;
+    }
+    return *this;  // (2) always return *this from op=
+}
+
+When we say this == &rhs, it means that this points to the same object that rhs refers to. However, this does not mean that this "owns" rhs's address or that this contains rhs's values automatically.
+ x_ = rhs.x_; 代表了现在在rhs.x_这个地址，这个地址存储了5，after asignning， x_ = 5
